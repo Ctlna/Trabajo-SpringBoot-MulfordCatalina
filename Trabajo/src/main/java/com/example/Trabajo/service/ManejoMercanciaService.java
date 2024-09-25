@@ -21,6 +21,18 @@ public class ManejoMercanciaService {
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
+    // Buscar un cliente
+    public Cliente buscarClientePorId(Long id) {
+        return clienteRepository.getReferenceById(id);
+    }
+    // Editar un cliente
+    public Cliente editarClientePorId(Long id, Cliente clienteDetalle) {
+        Cliente cliente = clienteRepository.findById(id).orElseThrow();
+        cliente.setNombre(clienteDetalle.getNombre());
+        cliente.setIdentificacion(clienteDetalle.getIdentificacion());
+        return clienteRepository.save(cliente);
+    }
+
 
 
     // ------- Empleado
@@ -34,6 +46,19 @@ public class ManejoMercanciaService {
     // Ver empleados
     public List<Empleado> listarEmpleados() {
         return empleadoRepository.findAll();
+    }
+    // Ver un empleado
+    public Empleado buscarEmpleadoPorId(Long id) {
+        return empleadoRepository.getReferenceById(id);
+    }
+    // Editar un empleado
+    public Empleado editarEmpleadoPorId(Long id, Empleado empleadoDetalle) {
+        Empleado empleado = empleadoRepository.findById(id).orElseThrow();
+        empleado.setNombre(empleadoDetalle.getNombre());
+        empleado.setIdentificacion(empleadoDetalle.getIdentificacion());
+        empleado.setRol(empleadoDetalle.getRol());
+        empleado.setFecha_nacimiento(empleadoDetalle.getFecha_nacimiento());
+        return empleadoRepository.save(empleado);
     }
 
 
@@ -49,6 +74,23 @@ public class ManejoMercanciaService {
     public List<Proveedor> listarProveedores() {
         return proveedorRepository.findAll();
     }
+    // Ver proveedor especifico
+    public Proveedor buscarProveedorPorId(Long id) {
+        return proveedorRepository.getReferenceById(id);
+    }
+    // Editar proveedor
+    public Proveedor editarProveedorPorId(Long id, Proveedor proveedorDetalle) {
+        Proveedor proveedor = proveedorRepository.findById(id).orElseThrow();
+        proveedor.setNombre(proveedorDetalle.getNombre());
+        proveedor.setNumero_contacto(proveedorDetalle.getNumero_contacto());
+        proveedor.setNombre_contacto(proveedorDetalle.getNombre_contacto());
+        proveedor.setDireccion(proveedorDetalle.getDireccion());
+        return proveedorRepository.save(proveedor);
+    }
+
+
+
+
 
     // ------- Mercancia
     @Autowired
@@ -58,10 +100,25 @@ public class ManejoMercanciaService {
     public Mercancia agregarMercancia(Mercancia mercancia) {
         return mercanciaRepository.save(mercancia);
     }
-    // Ver mercancia
+    // Ver toda la mercancia
     public List<Mercancia> listarMercancias() {
         return mercanciaRepository.findAll();
     }
+    // Ver una sola mercancia
+    public Mercancia buscarMercanciaPorId(Long id) {
+        return mercanciaRepository.getReferenceById(id);
+    }
+    // Editar mercancia
+    public Mercancia editarProveedorPorId(Long id, Mercancia mercanciaDetalle) {
+        Mercancia mercancia = mercanciaRepository.findById(id).orElseThrow();
+        mercancia.setNombre(mercanciaDetalle.getNombre());
+        mercancia.setNumero_serie(mercanciaDetalle.getNumero_serie());
+        mercancia.setPrecio_compra(mercanciaDetalle.getPrecio_compra());
+        mercancia.setPrecio_venta(mercanciaDetalle.getPrecio_venta());
+        return mercanciaRepository.save(mercanciaDetalle);
+    }
+
+
 
 
     // ------- Recibo unitario
@@ -76,6 +133,19 @@ public class ManejoMercanciaService {
     public List<ReciboUnitario> listarRecibos() {
         return reciboUnitarioRepository.findAll();
     }
+    // Ver un recibo
+    public ReciboUnitario buscarReciboPorId(Long id) {
+        return reciboUnitarioRepository.getReferenceById(id);
+    }
+    // Editar un recibo
+    public ReciboUnitario editarReciboPorId(Long id, ReciboUnitario reciboDetalle) {
+        ReciboUnitario recibo = reciboUnitarioRepository.findById(id).orElseThrow();
+        recibo.setId_mercancia(reciboDetalle.getId_mercancia());
+        recibo.setPrecio_unidad(reciboDetalle.getPrecio_unidad());
+        recibo.setCantidad(reciboDetalle.getCantidad());
+        recibo.setFecha_pedido(reciboDetalle.getFecha_pedido());
+        return reciboUnitarioRepository.save(recibo);
+    }
 
     // ------- Recibo general
     @Autowired
@@ -89,6 +159,21 @@ public class ManejoMercanciaService {
     public List<ReciboGeneralVenta> listarReciboGeneralVentas() {
         return reciboGeneralVentaRepository.findAll();
     }
+    // Ver un solo recibo de venta
+    public ReciboGeneralVenta buscarReciboGeneralVentaPorId(Long id) {
+        return reciboGeneralVentaRepository.getReferenceById(id);
+    }
+    // Editar un recibo de venta
+    public ReciboGeneralVenta editarReciboGeneralVentaPorId(Long id, ReciboGeneralVenta reciboDetalle) {
+        ReciboGeneralVenta recibo = reciboGeneralVentaRepository.findById(id).orElseThrow();
+        recibo.setId_empleado(reciboDetalle.getId_empleado());
+        recibo.setId_cliente(reciboDetalle.getId_cliente());
+        recibo.setId_recibo_unitario(reciboDetalle.getId_recibo_unitario());
+        recibo.setPrecio_total(reciboDetalle.getPrecio_total());
+        recibo.setForma_pago(reciboDetalle.getForma_pago());
+        recibo.setFecha_compra(reciboDetalle.getFecha_compra());
+        return reciboGeneralVentaRepository.save(recibo);
+    }
 
 
     @Autowired
@@ -101,6 +186,21 @@ public class ManejoMercanciaService {
     // Ver los recibos de las compras hechas
     public List<ReciboGeneralCompra> listarReciboGeneralCompras() {
         return reciboGeneralCompraRepository.findAll();
+    }
+    // Ver un solo recibo de compra
+    public ReciboGeneralCompra buscarReciboGeneralCompraPorId(Long id) {
+        return reciboGeneralCompraRepository.getReferenceById(id);
+    }
+    // Editar un recibo de compra
+    public ReciboGeneralCompra editarReciboGeneralCompra(Long id, ReciboGeneralCompra reciboDetalle) {
+        ReciboGeneralCompra recibo = reciboGeneralCompraRepository.findById(id).orElseThrow();
+        recibo.setId_empleado(reciboDetalle.getId_empleado());
+        recibo.setId_proveedor(reciboDetalle.getId_proveedor());
+        recibo.setId_recibo_unitario(reciboDetalle.getId_recibo_unitario());
+        recibo.setPrecio_total(reciboDetalle.getPrecio_total());
+        recibo.setForma_pago(reciboDetalle.getForma_pago());
+        recibo.setFecha_compra(reciboDetalle.getFecha_compra());
+        return reciboGeneralCompraRepository.save(recibo);
     }
 }
 
