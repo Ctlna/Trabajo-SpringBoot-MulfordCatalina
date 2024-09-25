@@ -12,5 +12,5 @@ public class ManejoSistema {
     @Autowired
     private ManejoMercanciaService manejoMercanciaService;
 
-    
+
 }
