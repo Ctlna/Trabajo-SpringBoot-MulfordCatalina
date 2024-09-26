@@ -1,14 +1,15 @@
 package com.example.Trabajo.controller;
 
-import com.example.Trabajo.model.*;
-import com.example.Trabajo.service.ManejoMercanciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.example.Trabajo.model.*;
+import com.example.Trabajo.service.ManejoMercanciaService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/ControlManejoMercancias")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ManejoSistema {
 
     @Autowired
@@ -25,9 +26,10 @@ public class ManejoSistema {
     public List<Cliente> verClientes(){
         return manejoMercanciaService.listarClientes();
     }
+
     @GetMapping("/cliente/{id}")
     public Cliente verCliente(@PathVariable Long id) {
-        return manejoMercanciaService.buscarClientePorId(id);
+        return manejoMercanciaService.buscarClientePorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/cliente/{id}")
@@ -49,7 +51,7 @@ public class ManejoSistema {
     }
     @GetMapping("/empleado/{id}")
     public Empleado verEmpleado(@PathVariable Long id) {
-        return manejoMercanciaService.buscarEmpleadoPorId(id);
+        return manejoMercanciaService.buscarEmpleadoPorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/empleado/{id}")
@@ -71,7 +73,7 @@ public class ManejoSistema {
     }
     @GetMapping("/proveedor/{id}")
     public Proveedor verProveedor(@PathVariable Long id) {
-        return manejoMercanciaService.buscarProveedorPorId(id);
+        return manejoMercanciaService.buscarProveedorPorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/proveedor/{id}")
@@ -91,9 +93,10 @@ public class ManejoSistema {
     public List<Mercancia> verMercancias(){
         return manejoMercanciaService.listarMercancias();
     }
+
     @GetMapping("/mercancia/{id}")
-    public Mercancia verMercancia(@PathVariable Long id) {
-        return manejoMercanciaService.buscarMercanciaPorId(id);
+    public Mercancia verMercanciaporId(@PathVariable Long id) {
+        return manejoMercanciaService.buscarMercanciaPorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/mercancia/{id}")
@@ -115,7 +118,7 @@ public class ManejoSistema {
     }
     @GetMapping("/reciboUnitario/{id}")
     public ReciboUnitario verRecibosUnitario(@PathVariable Long id) {
-        return manejoMercanciaService.buscarReciboPorId(id);
+        return manejoMercanciaService.buscarReciboPorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/reciboUnitario/{id}")
@@ -135,7 +138,7 @@ public class ManejoSistema {
     }
     @GetMapping("/reciboVenta/{id}")
     public ReciboGeneralVenta verRecibosVentas(@PathVariable Long id) {
-        return manejoMercanciaService.buscarReciboGeneralVentaPorId(id);
+        return manejoMercanciaService.buscarReciboGeneralVentaPorId(id).orElseThrow();
     }
     @PutMapping("/reciboVenta/{id}")
     public ReciboGeneralVenta modificarReciboVenta(@PathVariable Long id, @RequestBody ReciboGeneralVenta reciboGeneralVenta) {
@@ -156,7 +159,7 @@ public class ManejoSistema {
     }
     @GetMapping("/reciboCompra/{id}")
     public ReciboGeneralCompra verRecibosCompra(@PathVariable Long id) {
-        return manejoMercanciaService.buscarReciboGeneralCompraPorId(id);
+        return manejoMercanciaService.buscarReciboGeneralCompraPorId(id).orElseThrow();
     }
     // Editar
     @PutMapping("/reciboCompra/{id}")

@@ -1,32 +1,30 @@
 package com.example.Trabajo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
 @Entity
-public class ReciboGeneralCompra {
+@Table(name="Recibo_General_Venta")
+public class ReciboGeneralVenta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int id_empleado;
-    private int id_proveedor;
+    private int id_cliente;
     private int id_recibo_unitario;
     private int precio_total;
     private String forma_pago;
     private Date fecha_compra;
 
-    public ReciboGeneralCompra() {
+    public ReciboGeneralVenta() {
     }
 
-    public ReciboGeneralCompra(int id_empleado, int id_proveedor, int id_recibo_unitario, int precio_total, String forma_pago, Date fecha_compra) {
+    public ReciboGeneralVenta(int id_empleado, int id_cliente, int id_recibo_unitario, int precio_total, String forma_pago, Date fecha_compra) {
         this.id_empleado = id_empleado;
-        this.id_proveedor = id_proveedor;
+        this.id_cliente = id_cliente;
         this.id_recibo_unitario = id_recibo_unitario;
         this.precio_total = precio_total;
         this.forma_pago = forma_pago;
@@ -49,12 +47,12 @@ public class ReciboGeneralCompra {
         this.id_empleado = id_empleado;
     }
 
-    public int getId_proveedor() {
-        return id_proveedor;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public int getId_recibo_unitario() {

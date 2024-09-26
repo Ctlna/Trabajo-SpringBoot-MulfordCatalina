@@ -1,6 +1,7 @@
 package com.example.Trabajo.service;
 
 import com.example.Trabajo.model.*;
+import java.util.Optional;
 import com.example.Trabajo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,10 @@ public class ManejoMercanciaService {
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
+
     // Buscar un cliente
-    public Cliente buscarClientePorId(Long id) {
-        return clienteRepository.getReferenceById(id);
+    public Optional<Cliente> buscarClientePorId(Long id) {
+        return clienteRepository.findById(id);
     }
     // Editar un cliente
     public Cliente editarClientePorId(Long id, Cliente clienteDetalle) {
@@ -48,8 +50,8 @@ public class ManejoMercanciaService {
         return empleadoRepository.findAll();
     }
     // Ver un empleado
-    public Empleado buscarEmpleadoPorId(Long id) {
-        return empleadoRepository.getReferenceById(id);
+    public Optional<Empleado> buscarEmpleadoPorId(Long id) {
+        return empleadoRepository.findById(id);
     }
     // Editar un empleado
     public Empleado editarEmpleadoPorId(Long id, Empleado empleadoDetalle) {
@@ -75,8 +77,8 @@ public class ManejoMercanciaService {
         return proveedorRepository.findAll();
     }
     // Ver proveedor especifico
-    public Proveedor buscarProveedorPorId(Long id) {
-        return proveedorRepository.getReferenceById(id);
+    public Optional<Proveedor> buscarProveedorPorId(Long id) {
+        return proveedorRepository.findById(id);
     }
     // Editar proveedor
     public Proveedor editarProveedorPorId(Long id, Proveedor proveedorDetalle) {
@@ -105,8 +107,8 @@ public class ManejoMercanciaService {
         return mercanciaRepository.findAll();
     }
     // Ver una sola mercancia
-    public Mercancia buscarMercanciaPorId(Long id) {
-        return mercanciaRepository.getReferenceById(id);
+    public Optional<Mercancia> buscarMercanciaPorId(Long id) {
+        return mercanciaRepository.findById(id);
     }
     // Editar mercancia
     public Mercancia editarProveedorPorId(Long id, Mercancia mercanciaDetalle) {
@@ -134,8 +136,8 @@ public class ManejoMercanciaService {
         return reciboUnitarioRepository.findAll();
     }
     // Ver un recibo
-    public ReciboUnitario buscarReciboPorId(Long id) {
-        return reciboUnitarioRepository.getReferenceById(id);
+    public Optional<ReciboUnitario> buscarReciboPorId(Long id) {
+        return reciboUnitarioRepository.findById(id);
     }
     // Editar un recibo
     public ReciboUnitario editarReciboPorId(Long id, ReciboUnitario reciboDetalle) {
@@ -162,8 +164,8 @@ public class ManejoMercanciaService {
         return reciboGeneralVentaRepository.findAll();
     }
     // Ver un solo recibo de venta
-    public ReciboGeneralVenta buscarReciboGeneralVentaPorId(Long id) {
-        return reciboGeneralVentaRepository.getReferenceById(id);
+    public Optional<ReciboGeneralVenta> buscarReciboGeneralVentaPorId(Long id) {
+        return reciboGeneralVentaRepository.findById(id);
     }
     // Editar un recibo de venta
     public ReciboGeneralVenta editarReciboGeneralVentaPorId(Long id, ReciboGeneralVenta reciboDetalle) {
@@ -190,8 +192,8 @@ public class ManejoMercanciaService {
         return reciboGeneralCompraRepository.findAll();
     }
     // Ver un solo recibo de compra
-    public ReciboGeneralCompra buscarReciboGeneralCompraPorId(Long id) {
-        return reciboGeneralCompraRepository.getReferenceById(id);
+    public Optional<ReciboGeneralCompra> buscarReciboGeneralCompraPorId(Long id) {
+        return reciboGeneralCompraRepository.findById(id);
     }
     // Editar un recibo de compra
     public ReciboGeneralCompra editarReciboGeneralCompra(Long id, ReciboGeneralCompra reciboDetalle) {
