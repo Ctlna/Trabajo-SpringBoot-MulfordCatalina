@@ -147,6 +147,8 @@ public class ManejoMercanciaService {
         return reciboUnitarioRepository.save(recibo);
     }
 
+
+
     // ------- Recibo general
     @Autowired
     private ReciboGeneralVentaRepository reciboGeneralVentaRepository;
